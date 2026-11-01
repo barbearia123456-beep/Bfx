@@ -1,0 +1,34 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000"><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css"><title>Forex Robô</title></head><body>
+<header><div><b>Forex Robô</b><span id="dot" class="dot"></span><small id="connTxt">sem conexão</small></div><span id="modeTag" class="tag sim">SIMULADOR</span></header>
+<main>
+<section id="p-chart" class="page on">
+ <div class="row"><select id="pair"></select><button id="kind">Linha</button></div>
+ <div id="tfs" class="chips"></div>
+ <div class="px"><b id="price">—</b><small id="spr"></small><small>Saldo <b id="bal">—</b></small></div>
+ <canvas id="cv"></canvas>
+ <div class="row"><button id="zin">＋</button><button id="zout">－</button><input id="lot" type="number" step="0.01" min="0.01" aria-label="Lote"></div>
+ <div class="row"><button id="bBuy" class="g">COMPRAR</button><button id="bSell" class="r">VENDER</button></div>
+ <select id="strat"></select><button id="autoBtn">LIGAR AUTOMAÇÃO</button>
+ <small class="note">A automação funciona com o app aberto e a tela ligada (o app mantém a tela acesa). Fechar o app para o robô; os stops ficam na corretora.</small>
+ <div class="card"><small>Posições abertas</small><div id="open" class="list"></div></div></section>
+<section id="p-bots" class="page"><div class="card"><b>Backtest 2025 (dados reais da sua corretora)</b>
+ <select id="btStr"></select><div class="row"><select id="btSym"></select><select id="btTf"></select></div>
+ <div class="row"><label>SL×ATR<input id="btSl" value="1.5"></label><label>TP×ATR<input id="btTp" value="2"></label></div>
+ <div class="row"><label>Spread pips<input id="btSp" value="1"></label><label>Lote<input id="btLot" value="0.1"></label></div>
+ <button id="btRun" class="g">BAIXAR 2025 E RODAR</button><small id="btProg"></small><div id="btOut"></div><canvas id="btCv"></canvas></div>
+ <div id="cards"></div></section>
+<section id="p-acct" class="page"><div class="card"><b>Conectar corretora (MT5)</b>
+ <select id="f_broker"></select><input id="f_server" list="svList" placeholder="Servidor (ex.: Exness-MT5Trial)"><datalist id="svList"></datalist>
+ <input id="f_login" inputmode="numeric" placeholder="Login (número da conta)"><input id="f_pw" type="password" autocomplete="off" placeholder="Senha de trading (não é salva)">
+ <input id="f_token" type="password" autocomplete="off" placeholder="Token MetaApi"><input id="f_region" placeholder="Região (new-york)">
+ <button id="bConn" class="g">CONECTAR CONTA</button><input id="f_acct" placeholder="ou ID de conta MetaApi já criada"><button id="bUse">USAR ESTA CONTA</button><small id="acctStat"></small>
+ <small>O nome exato do servidor está no seu MT5 (Arquivo → Abrir conta). Os exemplos da lista podem não existir na sua corretora.</small></div>
+ <div class="card"><b>Modo de operação</b><select id="f_mode"><option value="sim">Simulador (ordens virtuais)</option><option value="demo">Conta demo (ordens na corretora)</option><option value="real">Conta real</option></select>
+ <input id="f_suf" placeholder="Sufixo do símbolo (ex.: m, .a) — se sua corretora usar"><label>Lote máximo<input id="f_maxLot" type="number" step="0.01"></label><label>Perda diária máx. (US$)<input id="f_dayLoss" type="number"></label>
+ <button id="bMode" class="g">APLICAR MODO</button><button id="bReset">ZERAR SIMULADOR</button><button id="bInst" style="display:none">INSTALAR APP</button></div></section>
+<section id="p-hist" class="page"><div id="stats" class="grid"></div><div id="hist" class="list"></div><button id="bClear" class="r">APAGAR HISTÓRICO</button></section>
+</main><div id="toast"></div>
+<nav><button data-p="chart" class="on">Gráfico</button><button data-p="bots">Robôs</button><button data-p="acct">Contas</button><button data-p="hist">Histórico</button></nav>
+<script src="strategies.js"></script><script src="broker.js"></script><script src="app.js"></script></body></html>
